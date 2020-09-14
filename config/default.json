@@ -1,0 +1,4 @@
+{
+	"port": 5000,
+	"mongoUrl": "mongodb://10.0.0.81:27017/kino"
+}
