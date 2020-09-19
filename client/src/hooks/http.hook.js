@@ -9,7 +9,7 @@ export const useHttp = () => {
 	    setLoading(true);
 	    
 	    if (body) {
-		body = JSON.strigify(body);
+		body = JSON.stringify(body);
 		headers["Content-Type"] = "application/json";
 	    }
 

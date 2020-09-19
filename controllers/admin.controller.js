@@ -31,4 +31,27 @@ router.post("/documents/create", async (req, res) => {
     } catch (e) {handleError(e,req,res)}
 });
 
+router.post("/documents/data-types", async (req,res) => {
+    try {
+	const {currentCollection} = req.body;
+	console.log("xxxxx");
+	const dataTypes = {};
+	const datas = await db[currentCollection].schema.paths;
+	Object.keys(datas).forEach(item => {
+	    dataTypes[item] = datas[item].instance;
+	});
+	
+	return res.status(200).json({dataTypes});
+    } catch (e) {handleError(e,req,res)}
+});
+
+router.post("/documents/delete", async (req,res)=> {
+    try {
+	const {currentCollection,currentDocumentId} = req.body;
+	const delDoc = await db[currentCollection].deleteOne({_id: currentDocumentId});
+
+	return res.status(200).json({done: true, message: "Deleting was done"});
+    } catch (e) {handleError(e,req,res)}
+});
+
 module.exports = router;

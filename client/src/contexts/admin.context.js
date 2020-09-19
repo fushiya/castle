@@ -6,5 +6,7 @@ export const AdminContext = createContext({
     collections: [],
     setCollections: noop(),
     currentCollection: null,
-    setCurrentCollection: noop()
+    setCurrentCollection: noop(),
+    currentDocumentId: null,
+    setCurrentDocumentId: noop()
 });
